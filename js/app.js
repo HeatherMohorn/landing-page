@@ -1,7 +1,21 @@
-console.log("hello world");
 
+function getSections(){
+  return document.querySelectorAll("section");
+}
 
+function printNavNames(){
+  var navNames = [];
+  var sections = getSections();
+  for (let i = 0; i < sections.length; i++){
+    navNames.push(sections[i].getAttribute("data-nav"));
+  }
+  console.log(navNames);
+}
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    printNavNames();
+});
 
 
 
