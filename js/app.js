@@ -15,7 +15,17 @@ function printNavNames(){
 document.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
     printNavNames();
+    addNav();
 });
+
+function addNav(){
+  var navList= document.getElementById("navbar__list");
+  for (let i = 0; i < getSections().length; i++){
+    var listItem = document.createElement("li");
+    listItem.appendChild(document.createTextNode("Test" + i));
+    navList.appendChild(listItem);
+  }
+}
 
 
 
