@@ -15,7 +15,7 @@ function getNavNames(){
 
 document.addEventListener('DOMContentLoaded', (event) => {
     addNavText();
-    addNavListeners();
+    testListener();
 });
 
 function addNavText(){
@@ -30,10 +30,28 @@ function addNavText(){
 
 function addNavListeners(){
   var listItems = document.querySelectorAll('li');
+  var sections = getSections();
   for (let i = 0; i < listItems.length; i++){
-    var element = listItems[i];
-    element.addEventListener("click", jump(element.getAttribute("data-nav")));
-  }
+    var element = sections[i];
+    var link = listItems[i];
+    //link.addEventListener("click", jump(element.getAttribute("id"));
+    //  function(event){
+    //    event.preventDefault();
+    //    var str = "index.html#" + element.getAttribute("id");
+    //    window.location = str;
+    //  },
+    //  false;
+    }
+}
+
+function testListener(){
+  var listItems = document.querySelectorAll('li');
+  var sections = getSections();
+  listItems[0].addEventListener("onclick", tester(), false);
+
+}
+function tester(){
+  console.log("test worked");
 }
 
 function jump(location){
