@@ -20,13 +20,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 function addNavText(){
   navNames = getNavNames();
-  //sections = getSections();
+  sections = getSections();
   var navList= document.getElementById("navbar__list");
   for (let i = 0; i < getSections().length; i++){
     var listItem = document.createElement("li");
+    var link = document.createElement("a");
+    link.href = "#"+sections[i].id;
+    link.innerText = navNames[i];
+    listItem.appendChild(link);
+    //var listItem = document.createElement("a");
     //var inner = "<a href = #" + secions[i].id + ">" + navNames[i] + "</a>"
     //listItem.innerHTML = inner;
-    listItem.appendChild(document.createTextNode(navNames[i]));
+    //listItem.appendChild(document.createTextNode(navNames[i]));
     navList.appendChild(listItem);
   }
 }
