@@ -28,10 +28,6 @@ function addNavText(){
     link.href = "#"+sections[i].id;
     link.innerText = navNames[i];
     listItem.appendChild(link);
-    //var listItem = document.createElement("a");
-    //var inner = "<a href = #" + secions[i].id + ">" + navNames[i] + "</a>"
-    //listItem.innerHTML = inner;
-    //listItem.appendChild(document.createTextNode(navNames[i]));
     navList.appendChild(listItem);
   }
 }
@@ -68,6 +64,27 @@ function jump(location){
 }
 
 
+function activeSection(){
+  var sections = getSections();
+  var positions = [];
+  for (let i = 0; i < sections.length; i++){
+    rect = sections[i].getBoundingClientRect();
+    positions[i] = rect.top;
+    if (positions[i] < 0){
+      positions[i] *= -1;
+    }
+  }
+  var min = positions[0];
+  var minSection = sections[0];
+
+  for (let i = 0; i < sections.length; i++){
+    if (positions[i] < min){
+      min = positions[i];
+      minSection = sections[i];
+    }
+  }
+  return minSection;
+}
 /**
  *
  * Manipulating the DOM exercise.
