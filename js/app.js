@@ -12,11 +12,13 @@ function getNavNames(){
   return navNames;
 }
 
+
 document.addEventListener('DOMContentLoaded', (event) => {
-    addNav();
+    addNavText();
+    addNavListeners();
 });
 
-function addNav(){
+function addNavText(){
   navNames = getNavNames();
   var navList= document.getElementById("navbar__list");
   for (let i = 0; i < getSections().length; i++){
@@ -26,6 +28,18 @@ function addNav(){
   }
 }
 
+function addNavListeners(){
+  var listItems = document.querySelectorAll('li');
+  for (let i = 0; i < listItems.length; i++){
+    var element = listItems[i];
+    element.addEventListener("click", jump(element.getAttribute("data-nav")));
+  }
+}
+
+function jump(location){
+  var str = "index.html#" + location;
+  window.location = str;
+}
 
 
 /**
