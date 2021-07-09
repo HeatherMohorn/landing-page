@@ -3,26 +3,25 @@ function getSections(){
   return document.querySelectorAll("section");
 }
 
-function printNavNames(){
+function getNavNames(){
   var navNames = [];
   var sections = getSections();
   for (let i = 0; i < sections.length; i++){
     navNames.push(sections[i].getAttribute("data-nav"));
   }
-  console.log(navNames);
+  return navNames;
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    console.log('DOM fully loaded and parsed');
-    printNavNames();
     addNav();
 });
 
 function addNav(){
+  navNames = getNavNames();
   var navList= document.getElementById("navbar__list");
   for (let i = 0; i < getSections().length; i++){
     var listItem = document.createElement("li");
-    listItem.appendChild(document.createTextNode("Test" + i));
+    listItem.appendChild(document.createTextNode(navNames[i]));
     navList.appendChild(listItem);
   }
 }
