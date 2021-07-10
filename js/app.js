@@ -1,54 +1,3 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    addNavText();
-    //testListener();
-});
-
-document.addEventListener("scroll", (event) =>{
-
-    activeClassUpdate();
-});
-
-
-
-
-function addNavText(){
-  navNames = getNavNames();
-  sections = getSections();
-  var navList= document.getElementById("navbar__list");
-  for (let i = 0; i < getSections().length; i++){
-    var listItem = document.createElement("li");
-    var link = document.createElement("a");
-    link.href = "#"+sections[i].id;
-    link.innerText = navNames[i];
-    listItem.appendChild(link);
-    navList.appendChild(listItem);
-  }
-}
-
-function addNavListeners(){
-  var listItems = document.querySelectorAll('li');
-  var sections = getSections();
-  for (let i = 0; i < listItems.length; i++){
-    var element = sections[i];
-    var link = listItems[i];
-    }
-}
-
-//function testListener(){
-//  var listItems = document.querySelectorAll('li');
-//  var sections = getSections();
-//  listItems[0].addEventListener("onclick", tester(), false);
-//}
-//function tester(){
-//  console.log("test worked");
-//}
-
-
-
-
-
-
-
 /**
  *
  * Manipulating the DOM exercise.
@@ -65,16 +14,9 @@ function addNavListeners(){
 */
 
 /**
- * Define Global Variables
- *
-*/
+Define functions
+**/
 
-
-/**
- * End Global Variables
- * Start Helper Functions
- *
-*/
 function getSections(){
   return document.querySelectorAll("section");
 }
@@ -135,29 +77,45 @@ function activeClassUpdate(){
   setActiveClass(section);
 }
 
+//add section names to nav bar with anchors
+function addNavText(){
+  navNames = getNavNames();
+  sections = getSections();
+  var navList= document.getElementById("navbar__list");
+  for (let i = 0; i < getSections().length; i++){
+    var listItem = document.createElement("li");
+    var link = document.createElement("a");
+    link.href = "#"+sections[i].id;
+    link.innerText = navNames[i];
+    listItem.appendChild(link);
+    navList.appendChild(listItem);
+  }
+}
+
+function addNavListeners(){
+  var listItems = document.querySelectorAll('li');
+  var sections = getSections();
+  for (let i = 0; i < listItems.length; i++){
+    var element = sections[i];
+    var link = listItems[i];
+    }
+}
+
+
 /**
  * End Helper Functions
- * Begin Main Functions
- *
 */
-
-// build the nav
-
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
 
 
 /**
- * End Main Functions
  * Begin Events
- *
 */
 
-// Build menu
+document.addEventListener('DOMContentLoaded', (event) => {
+    addNavText();
+});
 
-// Scroll to section on link click
+document.addEventListener("scroll", (event) =>{
 
-// Set sections as active
+    activeClassUpdate();
+});
