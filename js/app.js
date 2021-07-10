@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     addNavText();
-    testListener();
+    //testListener();
 });
 
 document.addEventListener("scroll", (event) =>{
@@ -9,18 +9,7 @@ document.addEventListener("scroll", (event) =>{
 });
 
 
-function getSections(){
-  return document.querySelectorAll("section");
-}
 
-function getNavNames(){
-  var navNames = [];
-  var sections = getSections();
-  for (let i = 0; i < sections.length; i++){
-    navNames.push(sections[i].getAttribute("data-nav"));
-  }
-  return navNames;
-}
 
 function addNavText(){
   navNames = getNavNames();
@@ -45,58 +34,18 @@ function addNavListeners(){
     }
 }
 
-function testListener(){
-  var listItems = document.querySelectorAll('li');
-  var sections = getSections();
-  listItems[0].addEventListener("onclick", tester(), false);
-}
-function tester(){
-  console.log("test worked");
-}
+//function testListener(){
+//  var listItems = document.querySelectorAll('li');
+//  var sections = getSections();
+//  listItems[0].addEventListener("onclick", tester(), false);
+//}
+//function tester(){
+//  console.log("test worked");
+//}
 
 
-function activeSection(){
-  var sections = getSections();
-  var positions = [];
-  for (let i = 0; i < sections.length; i++){
-    rect = sections[i].getBoundingClientRect();
-    positions[i] = rect.top;
-    if (positions[i] < 0){
-      positions[i] *= -1;
-    }
-  }
-  var min = positions[0];
-  var minSection = sections[0];
 
-  for (let i = 0; i < sections.length; i++){
-    if (positions[i] < min){
-      min = positions[i];
-      minSection = sections[i];
-    }
-  }
-  return minSection;
-}
 
-function setActiveClass(section){
-  sections = getSections();
-  for (let i = 0; i < sections.length; i++){
-      if (sections[i] == section){
-        if(sections[i].classList.contains("your-active-class")==false){
-            sections[i].classList.add("your-active-class");
-        }
-      }
-      else{
-        if (sections[i].classList.contains("your-active-class")){
-          sections[i].classList.remove("your-active-class");
-        }
-      }
-  }
-}
-
-function activeClassUpdate(){
-  section = activeSection();
-  setActiveClass(section);
-}
 
 
 
@@ -126,8 +75,65 @@ function activeClassUpdate(){
  * Start Helper Functions
  *
 */
+function getSections(){
+  return document.querySelectorAll("section");
+}
 
+//returns an array of the section labels
+function getNavNames(){
+  var navNames = [];
+  var sections = getSections();
+  for (let i = 0; i < sections.length; i++){
+    navNames.push(sections[i].getAttribute("data-nav"));
+  }
+  return navNames;
+}
 
+//determine which section is at the top
+function activeSection(){
+  var sections = getSections();
+  var positions = [];
+  for (let i = 0; i < sections.length; i++){
+    rect = sections[i].getBoundingClientRect();
+    positions[i] = rect.top;
+    if (positions[i] < 0){
+      positions[i] *= -1;
+    }
+  }
+  var min = positions[0];
+  var minSection = sections[0];
+
+  for (let i = 0; i < sections.length; i++){
+    if (positions[i] < min){
+      min = positions[i];
+      minSection = sections[i];
+    }
+  }
+  return minSection;
+}
+
+//changes the classes of all sections to update active class
+function setActiveClass(section){
+  sections = getSections();
+  for (let i = 0; i < sections.length; i++){
+      if (sections[i] == section){
+        if(sections[i].classList.contains("your-active-class")==false){
+            sections[i].classList.add("your-active-class");
+        }
+      }
+      else{
+        if (sections[i].classList.contains("your-active-class")){
+          sections[i].classList.remove("your-active-class");
+        }
+      }
+  }
+}
+
+//find active section and update classes of all sections accordingly
+function activeClassUpdate(){
+  section = activeSection();
+  setActiveClass(section);
+}
 
 /**
  * End Helper Functions
