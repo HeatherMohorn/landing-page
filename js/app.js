@@ -101,6 +101,16 @@ function setActiveClass(section){
       }
   }
 }
+
+function activeClassUpdate(){
+  section = activeSection();
+  setActiveClass(section);
+  console.log("scrolling")
+}
+
+document.addEventListener("onscroll",activeClassUpdate());
+
+
 /**
  *
  * Manipulating the DOM exercise.
