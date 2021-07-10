@@ -18,6 +18,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     testListener();
 });
 
+
+document.addEventListener("scroll", (event) =>{
+
+    activeClassUpdate();
+});
+
+
+
 function addNavText(){
   navNames = getNavNames();
   sections = getSections();
@@ -105,10 +113,8 @@ function setActiveClass(section){
 function activeClassUpdate(){
   section = activeSection();
   setActiveClass(section);
-  console.log("scrolling")
 }
 
-document.addEventListener("onscroll",activeClassUpdate());
 
 
 /**
