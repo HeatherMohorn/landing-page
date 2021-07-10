@@ -85,6 +85,22 @@ function activeSection(){
   }
   return minSection;
 }
+
+function setActiveClass(section){
+  sections = getSections();
+  for (let i = 0; i < sections.length; i++){
+      if (sections[i] == section){
+        if(sections[i].classList.contains("your-active-class")==false){
+            sections[i].classList.add("your-active-class");
+        }
+      }
+      else{
+        if (sections[i].classList.contains("your-active-class")){
+          sections[i].classList.remove("your-active-class");
+        }
+      }
+  }
+}
 /**
  *
  * Manipulating the DOM exercise.
