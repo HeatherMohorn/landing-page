@@ -1,3 +1,13 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    addNavText();
+    testListener();
+});
+
+document.addEventListener("scroll", (event) =>{
+
+    activeClassUpdate();
+});
+
 
 function getSections(){
   return document.querySelectorAll("section");
@@ -11,20 +21,6 @@ function getNavNames(){
   }
   return navNames;
 }
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    addNavText();
-    testListener();
-});
-
-
-document.addEventListener("scroll", (event) =>{
-
-    activeClassUpdate();
-});
-
-
 
 function addNavText(){
   navNames = getNavNames();
@@ -46,13 +42,6 @@ function addNavListeners(){
   for (let i = 0; i < listItems.length; i++){
     var element = sections[i];
     var link = listItems[i];
-    //link.addEventListener("click", jump(element.getAttribute("id"));
-    //  function(event){
-    //    event.preventDefault();
-    //    var str = "index.html#" + element.getAttribute("id");
-    //    window.location = str;
-    //  },
-    //  false;
     }
 }
 
@@ -60,15 +49,9 @@ function testListener(){
   var listItems = document.querySelectorAll('li');
   var sections = getSections();
   listItems[0].addEventListener("onclick", tester(), false);
-
 }
 function tester(){
   console.log("test worked");
-}
-
-function jump(location){
-  var str = "index.html#" + location;
-  window.location = str;
 }
 
 
